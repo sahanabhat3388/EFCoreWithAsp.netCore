@@ -33,7 +33,7 @@ namespace EFCoreWithAsp.netCore.Repositories
         public async Task UpdateAsync(Department departmentUpdated)
         {
 
-            var department = await _dbContext.Departments.FindAsync(departmentUpdated.Id);
+            var department = await _dbContext.Departments.FindAsync(departmentUpdated.DepartmentId);
             department.Name = departmentUpdated.Name;
 
             _dbContext.Departments.Update(department);
