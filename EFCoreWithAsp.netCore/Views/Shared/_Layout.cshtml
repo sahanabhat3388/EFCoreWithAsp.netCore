@@ -9,31 +9,56 @@
     <link rel="stylesheet" href="~/EFCoreWithAsp.netCore.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">EFCoreWithAsp.netCore</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                    <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                        <span class="fs-5 d-none d-sm-inline">Employee Management system</span>
+                    </a>
+                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a asp-controller="Home" asp-action="Index" class="nav-link align-middle px-0 text-white">
+                                <i class="fs-4 bi bi-house-door-fill"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+
+                        <li>
+                            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
+                                <i class="fs-4 bi bi-people-fill"></i> <span class="ms-1 d-none d-sm-inline">Employees</span>
+                            </a>
+                            <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                                <li class="w-100">
+                                    <a asp-controller="Employee" asp-action="Index" class="nav-link px-0 text-white"> List all</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Employee" asp-action="Add" class="nav-link px-0 text-white"> Add employee </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
+                                <i class="fs-4 bi bi-people-fill"></i> <span class="ms-1 d-none d-sm-inline">Department</span>
+                            </a>
+                            <ul class="collapse show nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+                                <li class="w-100">
+                                    <a asp-controller="Department" asp-action="Index" class="nav-link px-0 text-white"> List all</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Department" asp-action="Add" class="nav-link px-0 text-white"> Add Department </a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
+                    <hr>
+
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+            <div class="col py-3">
+                @RenderBody()
+            </div>
+        </div>
     </div>
 
     <footer class="border-top footer text-muted">
