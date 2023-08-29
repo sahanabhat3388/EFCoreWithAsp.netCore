@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - EFCoreWithAsp.netCore</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/EFCoreWithAsp.netCore.styles.css" asp-append-version="true" />
 </head>
@@ -19,13 +20,13 @@
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                         <li class="nav-item">
                             <a asp-controller="Home" asp-action="Index" class="nav-link align-middle px-0 text-white">
-                                <i class="fs-4 bi bi-house-door-fill"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                                <i class="fs-4 bi bi-house-fill"></i><span class="ms-1 d-none d-sm-inline">Home</span>
                             </a>
                         </li>
 
                         <li>
                             <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
-                                <i class="fs-4 bi bi-people-fill"></i> <span class="ms-1 d-none d-sm-inline">Employees</span>
+                                <i class="fs-4 bi bi-people-fill"></i><span class="ms-1 d-none d-sm-inline">Employees</span>
                             </a>
                             <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                                 <li class="w-100">
@@ -39,7 +40,7 @@
 
                         <li>
                             <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
-                                <i class="fs-4 bi bi-people-fill"></i> <span class="ms-1 d-none d-sm-inline">Department</span>
+                                <i class="fs-4 bi bi-building-fill-gear"></i><span class="ms-1 d-none d-sm-inline">Department</span>
                             </a>
                             <ul class="collapse show nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                                 <li class="w-100">
