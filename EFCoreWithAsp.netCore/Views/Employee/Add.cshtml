@@ -1,0 +1,69 @@
+﻿@{
+    ViewData["Title"] = "All employees";
+}
+<div class="p-4 container">
+    <div class="row p-4">
+        <div class="col-md-12">
+            <h3>Add new employee</h3>
+        </div>
+    </div>
+    <div class="row p-4">
+        <div class="col-md-6">
+            <form>
+                <div class="mb-3">
+                    <label for="FirstName" class="form-label fw-bold">First Name</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="LastName" class="form-label fw-bold">Last Name</label>
+                    <input type="text" class="form-control">
+                 </div>
+                <div class="mb-3">
+                    <label for="datetimepicker" class="form-label fw-bold">Date of Birth</label>
+                    <input type="date" class="form-control" name="DateOfBirth" />
+                </div>
+                <div class="mb-3">
+                    <label for="Gender" class="form-label fw-bold">Gender</label>
+                    <div class="d-flex">
+                        <div class="form-check px-4">
+                            <input class="form-check-input" value="male" type="radio" name="Gender">
+                            <label class="form-check-label fw-bold" for="Gender">
+                                Male
+                            </label>
+                        </div>
+                        <div class="form-check px-4">
+                            <input class="form-check-input" value="female" type="radio" name="Gender" checked>
+                            <label class="form-check-label fw-bold" for="Gender">
+                                Female
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                 <div class="mb-3">
+                    <label for="Email" class="form-label fw-bold">Email</label>
+                    <input type="email" class="form-control">
+                 </div>
+                 <div class="mb-3">
+                    <label for="PhoneNumber" class="form-label fw-bold">Phone Number</label>
+                    <input type="number" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="Address" class="form-label fw-bold">Address</label>
+                    <textarea class="form-control" rows="3"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Please choose department</label>
+                    <select></select>
+                </div>
+                <div class="mb-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="isActive" checked>
+                        <label class="form-check-label fw-bold" for="isActive">Mark as Active</label>
+                    </div>
+                 </div>
+                <button type="submit" class="btn btn-dark">Submit</button>
+
+            </form>
+        </div>
+   </div>
+</div>
