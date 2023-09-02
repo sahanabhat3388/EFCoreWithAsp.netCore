@@ -10,10 +10,10 @@
     </div>
     <div class="row p-4">
         <div class="col-md-6">
-            <form>
+            <form asp-controller="Department" asp-action="Add" method="post">
                 <div class="mb-3">
                     <label for="Name" class="form-label fw-bold">Department Name</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="name">
                     <span class="text-danger"></span>
                 </div>
                 <button type="submit" class="btn btn-dark">Submit</button>

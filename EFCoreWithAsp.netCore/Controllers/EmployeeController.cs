@@ -13,5 +13,12 @@ namespace EFCoreWithAsp.netCore.Controllers
         {
             return View();
         }
+
+        
+        [HttpPost]
+        public IActionResult Add(string firstName, string lastName)
+        {
+            return View();
+        }
     }
 }
