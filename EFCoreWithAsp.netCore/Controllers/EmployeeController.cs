@@ -9,12 +9,15 @@ namespace EFCoreWithAsp.netCore.Controllers
             return View();
         }
 
+        
+        //GET: Employee/Add
+        [HttpGet]
         public IActionResult Add()
         {
             return View();
         }
 
-        
+        //POST: Employee/Add
         [HttpPost]
         public IActionResult Add(string firstName, string lastName)
         {
