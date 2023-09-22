@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EFCoreWithAsp.netCore.Models;
+using EFCoreWithAsp.netCore.ViewModels;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace EFCoreWithAsp.netCore.Controllers
 {
@@ -19,7 +22,7 @@ namespace EFCoreWithAsp.netCore.Controllers
 
         //POST: Employee/Add
         [HttpPost]
-        public IActionResult Add(string firstName, string lastName)
+        public IActionResult Add(EmployeeViewModel model)
         {
             return View();
         }

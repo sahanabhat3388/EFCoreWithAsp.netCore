@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EFCoreWithAsp.netCore.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EFCoreWithAsp.netCore.Controllers
 {
@@ -14,7 +15,7 @@ namespace EFCoreWithAsp.netCore.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(string name)
+        public IActionResult Add(DepartmentViewModel model)
         {
             return View();
         }
