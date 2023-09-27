@@ -4,6 +4,7 @@ namespace EFCoreWithAsp.netCore.ViewModels
 {
     public class DepartmentViewModel
     {
-        public Department Department { get; set; }
+        public int DepartmentId { get; set; }
+        public string Name { get; set; }
     }
 }

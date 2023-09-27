@@ -19,7 +19,7 @@ namespace EFCoreWithAsp.netCore.Models
 
         [ForeignKey("Department")]
         public int DepartmentId { get; set; } //Foreign Key
-        public Department Department { get; set; } //Reference navigation property
+        public Department? Department { get; set; } //Reference navigation property
 
     }
 }
