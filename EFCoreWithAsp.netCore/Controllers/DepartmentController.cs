@@ -17,7 +17,14 @@ namespace EFCoreWithAsp.netCore.Controllers
         [HttpPost]
         public IActionResult Add(DepartmentViewModel model)
         {
-            return View();
+
+            if (!ModelState.IsValid)
+            {
+                return View(model); // Return to the form with validation errors
+            }
+
+            //Insert data to the database           
+            return View(model);
         }
     }
 }
