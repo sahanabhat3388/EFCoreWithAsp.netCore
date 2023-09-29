@@ -1,4 +1,5 @@
 ﻿using EFCoreWithAsp.netCore.Models;
+using EFCoreWithAsp.netCore.ViewModels;
 
 namespace EFCoreWithAsp.netCore.Repositories
 {
@@ -6,7 +7,7 @@ namespace EFCoreWithAsp.netCore.Repositories
     {
         Task<Department> GetByIdAsync(int id);
         Task<List<Department>> GetAllAsync();
-        Task AddAsync(Department department);
+        Task AddAsync(DepartmentViewModel department);
         Task UpdateAsync(Department department);
         Task DeleteAsync(int Id);
     }

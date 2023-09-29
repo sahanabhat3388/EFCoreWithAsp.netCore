@@ -1,10 +1,16 @@
-﻿using EFCoreWithAsp.netCore.ViewModels;
+﻿using EFCoreWithAsp.netCore.Repositories;
+using EFCoreWithAsp.netCore.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EFCoreWithAsp.netCore.Controllers
 {
     public class DepartmentController : Controller
     {
+        private readonly IDepartmentRepository _departmentRepository;
+        public DepartmentController(IDepartmentRepository departmentRepository)
+        {
+            _departmentRepository = departmentRepository;
+        }
         public IActionResult Index()
         {
             return View();
@@ -15,7 +21,7 @@ namespace EFCoreWithAsp.netCore.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(DepartmentViewModel model)
+        public async Task<IActionResult> Add(DepartmentViewModel model)
         {
 
             if (!ModelState.IsValid)
@@ -24,7 +30,10 @@ namespace EFCoreWithAsp.netCore.Controllers
             }
 
             //Insert data to the database           
-            return View(model);
+            await _departmentRepository.AddAsync(model);
+
+            // Redirect to List all department page
+            return RedirectToAction("Index", "Department");
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using EFCoreWithAsp.netCore.Data;
 using EFCoreWithAsp.netCore.Models;
+using EFCoreWithAsp.netCore.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace EFCoreWithAsp.netCore.Repositories
@@ -24,9 +25,13 @@ namespace EFCoreWithAsp.netCore.Repositories
             return await _dbContext.Departments.ToListAsync();
         }
 
-        public async Task AddAsync(Department department)
+        public async Task AddAsync(DepartmentViewModel department)
         {
-            await _dbContext.Departments.AddAsync(department);
+            var newDepartment = new Department()
+            {
+                Name = department.Name
+            };
+            await _dbContext.Departments.AddAsync(newDepartment);
             await _dbContext.SaveChangesAsync();
         }
 
