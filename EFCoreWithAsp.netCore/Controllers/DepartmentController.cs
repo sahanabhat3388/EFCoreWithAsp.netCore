@@ -11,9 +11,11 @@ namespace EFCoreWithAsp.netCore.Controllers
         {
             _departmentRepository = departmentRepository;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            //Fetch the data from database
+            var departments = await _departmentRepository.GetAllAsync();
+            return View(departments);
         }
         public IActionResult Add()
         {

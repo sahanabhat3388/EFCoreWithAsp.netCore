@@ -20,9 +20,23 @@ namespace EFCoreWithAsp.netCore.Repositories
             return await _dbContext.Departments.FindAsync(id);
         }
 
-        public async Task<List<Department>> GetAllAsync()
+        public async Task<List<DepartmentViewModel>> GetAllAsync()
         {
-            return await _dbContext.Departments.ToListAsync();
+            var departments = await _dbContext.Departments.ToListAsync();
+            List<DepartmentViewModel> departmentViewModels = new List<DepartmentViewModel>();
+            foreach (var department in departments)
+            {
+                var departmentViewModel = new DepartmentViewModel
+                {
+                    DepartmentId = department.DepartmentId,
+                    Name = department.Name
+                };
+
+                departmentViewModels.Add(departmentViewModel);
+            }
+
+            return departmentViewModels;
+
         }
 
         public async Task AddAsync(DepartmentViewModel department)

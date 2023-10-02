@@ -1,5 +1,35 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<DepartmentViewModel>
 @{
+    ViewData["Title"] = "All departments";
 }
+
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="p-4">All Departments</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 p-4">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Department</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var department in Model)
+                    {
+                        <tr>
+                            <th scope="row">@department.DepartmentId</th>
+                            <td>@department.Name</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,50 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<EmployeeViewModel>
 @{
+    ViewData["Title"] = "All Employees";
 }
+
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="p-4">All Employees</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 p-4">
+            <table class="table">
+                <thead>
+                     <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">FirstName</th>
+                        <th scope="col">LastName</th>
+                        <th scope="col">DateOfBirth</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">PhoneNumber</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">IsActive</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var employee in Model)
+                    {
+                        <tr>
+                            <th scope="row">@employee.EmployeeId</th>
+                            <td>@employee.FirstName</td>
+                            <td>@employee.LastName</td>
+                            <td>@employee.DateOfBirth</td>
+                            <td>@employee.Gender</td>
+                            <td>@employee.Email</td>
+                            <td>@employee.PhoneNumber</td>
+                            <td>@employee.Address</td>
+                            <td>@employee.IsActive</td>
+                        </tr>
+                    }
+                    
+                </tbody>
+                
+            </table>
+        </div>
+    </div>
+</div>
