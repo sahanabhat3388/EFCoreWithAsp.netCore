@@ -5,10 +5,10 @@ namespace EFCoreWithAsp.netCore.Repositories
 {
     public interface IEmployeeRepository
     {
-        Task<Employee> GetByIdAsync(int id);
+        Task<EmployeeViewModel> GetByIdAsync(int id);
         Task<List<EmployeeViewModel>> GetAllAsync();
         Task AddAsync(EmployeeViewModel employee);
-        Task UpdateAsync(Employee employee);
+        Task UpdateAsync(EmployeeViewModel employee);
         Task DeleteAsync(int Id);
 
         Task<List<Department>> GetAllDepartments();

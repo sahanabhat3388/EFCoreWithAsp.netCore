@@ -23,7 +23,8 @@ namespace EFCoreWithAsp.netCore.Repositories
                 Gender = employee.Gender,
                 Email = employee.Email,
                 Address = employee.Address,
-                DepartmentId = employee.DepartmentId
+                IsActive = employee.IsActive,
+                DepartmentId = employee.DepartmentId,
             };
             await _dbContext.Employees.AddAsync(newEmployee);
             await _dbContext.SaveChangesAsync();
@@ -53,7 +54,8 @@ namespace EFCoreWithAsp.netCore.Repositories
                     Email = employee.Email,
                     PhoneNumber = employee.PhoneNumber,
                     Address = employee.Address,
-                    IsActive = employee.IsActive
+                    IsActive = employee.IsActive,
+                    DepartmentId = employee.DepartmentId
                 };
 
                 employeeViewModels.Add(employeeViewModel);
@@ -62,12 +64,26 @@ namespace EFCoreWithAsp.netCore.Repositories
             return employeeViewModels;
         }
 
-        public async Task<Employee> GetByIdAsync(int id)
+        public async Task<EmployeeViewModel> GetByIdAsync(int id)
         {
-            return await _dbContext.Employees.FindAsync(id);
+            var employee = await _dbContext.Employees.FindAsync(id);
+            var employeeViewModel = new EmployeeViewModel
+            {
+                EmployeeId = employee.EmployeeId,
+                FirstName = employee.FirstName,
+                LastName = employee.LastName,
+                DateOfBirth = employee.DateOfBirth,
+                Gender = employee.Gender,
+                Email = employee.Email,
+                PhoneNumber = employee.PhoneNumber,
+                Address = employee.Address,
+                IsActive = employee.IsActive,
+                DepartmentId = employee.DepartmentId
+            };
+            return employeeViewModel;
         }
 
-        public async Task UpdateAsync(Employee employeeUpdated)
+        public async Task UpdateAsync(EmployeeViewModel employeeUpdated)
         {
             var employee = await _dbContext.Employees.FindAsync(employeeUpdated.EmployeeId);
             employee.FirstName = employeeUpdated.FirstName;
@@ -77,6 +93,7 @@ namespace EFCoreWithAsp.netCore.Repositories
             employee.PhoneNumber = employeeUpdated.PhoneNumber;
             employee.Address = employeeUpdated.Address;
             employee.DepartmentId = employeeUpdated.DepartmentId;
+            employee.IsActive= employeeUpdated.IsActive;
             _dbContext.Employees.Update(employee);
             await _dbContext.SaveChangesAsync();
         }

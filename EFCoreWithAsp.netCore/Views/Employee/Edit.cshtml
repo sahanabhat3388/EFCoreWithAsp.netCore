@@ -1,78 +1,75 @@
 ﻿@model EmployeeViewModel
 @{
-    ViewData["Title"] = "All employees";
+    ViewData["Title"] = "Edit employee details";
 }
+
 <div class="p-4 container">
     <div class="row p-4">
         <div class="col-md-12">
-            <h3>Add new employee</h3>
+            <h3>Edit employee details</h3>
         </div>
     </div>
     <div class="row p-4">
         <div class="col-md-6">
-            <form asp-controller="Employee" asp-action="Add" method="post">
+            <form asp-action="Edit" asp-controller="Employee" method="post">
+                <input hidden asp-for="EmployeeId" />
                 <div class="mb-3">
                     <label for="FirstName" class="form-label fw-bold">First Name</label>
                     <input asp-for="FirstName" type="text" class="form-control">
-                    <span asp-validation-for="FirstName" class="text-danger"></span>
-                </div>  
+                </div>
                 <div class="mb-3">
                     <label for="LastName" class="form-label fw-bold">Last Name</label>
-                    <input asp-for="LastName" type="text" class="form-control" >
-                    <span asp-validation-for="LastName" class="text-danger"></span>
-                 </div>
+                    <input asp-for="LastName" type="text" class="form-control">
+                </div>
                 <div class="mb-3">
                     <label for="datetimepicker" class="form-label fw-bold">Date of Birth</label>
-                    <input asp-for="DateOfBirth" type="date" class="form-control"/>
-                    <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                    <input asp-for="DateOfBirth" type="date" class="form-control" name="DateOfBirth" />
                 </div>
                 <div class="mb-3">
                     <label for="Gender" class="form-label fw-bold">Gender</label>
-                    <div class="d-flex">
+                    <div class="d-flex ">
                         <div class="form-check px-4">
-                            <input asp-for="Gender" class="form-check-input" value="male" type="radio">
+                            <input asp-for="Gender" class="form-check-input" value="male" type="radio" name="Gender">
                             <label class="form-check-label fw-bold" for="Gender">
                                 Male
                             </label>
                         </div>
                         <div class="form-check px-4">
-                            <input asp-for="Gender" class="form-check-input" value="female" type="radio">
+                            <input asp-for="Gender" class="form-check-input" value="female" type="radio" name="Gender">
                             <label class="form-check-label fw-bold" for="Gender">
                                 Female
                             </label>
                         </div>
-                        <span asp-validation-for="Gender" class="text-danger"></span>
                     </div>
+
                 </div>
-                 <div class="mb-3">
+                <div class="mb-3">
                     <label for="Email" class="form-label fw-bold">Email</label>
                     <input asp-for="Email" type="email" class="form-control">
-                    <span asp-validation-for="Email" class="text-danger"></span>
-                 </div>
-                 <div class="mb-3">
+                </div>
+                <div class="mb-3">
                     <label for="PhoneNumber" class="form-label fw-bold">Phone Number</label>
                     <input asp-for="PhoneNumber" type="number" class="form-control">
-                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label for="Address" class="form-label fw-bold">Address</label>
                     <textarea asp-for="Address" class="form-control" rows="3"></textarea>
-                    <span asp-validation-for="Address" class="text-danger"></span>
                 </div>
+
                 <div class="mb-3">
                     <label class="form-label fw-bold">Please choose department</label>
                     <select asp-for="DepartmentId" asp-items="ViewBag.Departments"></select>
                 </div>
                 <div class="mb-3">
                     <div class="form-check">
-                        <input asp-for="IsActive" class="form-check-input" type="checkbox" id="isActive" checked>
+                        <input asp-for="IsActive" class="form-check-input" type="checkbox" id="isActive">
                         <label class="form-check-label fw-bold" for="isActive">Mark as Active</label>
                     </div>
                     <span asp-validation-for="IsActive" class="text-danger"></span>
-                 </div>
+                </div>
                 <button type="submit" class="btn btn-dark">Submit</button>
-
             </form>
         </div>
-   </div>
+    </div>
+
 </div>

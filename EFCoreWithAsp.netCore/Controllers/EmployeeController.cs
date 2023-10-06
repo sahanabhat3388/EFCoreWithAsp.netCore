@@ -49,5 +49,45 @@ namespace EFCoreWithAsp.netCore.Controllers
             // Redirect to List all department page
             return RedirectToAction("Index", "Employee");
         }
+
+
+        //GET: Employee/Edit
+        [HttpGet]
+        public async  Task<IActionResult> Edit(int id)
+        {
+            //Fetch department details
+            var departments = await _employeeRepository.GetAllDepartments();
+            ViewBag.Departments = new SelectList(departments, "DepartmentId", "Name");
+
+            //Fetch the employee details
+            var employee = await _employeeRepository.GetByIdAsync(id);
+            return View(employee);
+        }
+
+        //POST: Employee/Edit
+        [HttpPost]
+        public async Task<IActionResult> Edit(EmployeeViewModel employee)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return View(employee); // Return to the form with validation errors
+            }
+            //Update the database with modified details
+            await _employeeRepository.UpdateAsync(employee);
+
+            // Redirect to List all department page
+            return RedirectToAction("Index", "Employee");
+        }
+
+        //GET: /Department/Delete
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            //Delete the data from database
+            await _employeeRepository.DeleteAsync(id);
+            // Redirect to List all department page
+            return RedirectToAction("Index", "Employee");
+        }
     }
 }
