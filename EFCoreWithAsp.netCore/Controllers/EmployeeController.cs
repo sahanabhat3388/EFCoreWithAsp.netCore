@@ -16,13 +16,20 @@ namespace EFCoreWithAsp.netCore.Controllers
         {
             _employeeRepository = employeeRepository;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
             var employees = await _employeeRepository.GetAllAsync();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                employees = employees.Where(n => n.FirstName.Contains(searchString)
+                || n.LastName.Contains(searchString)).ToList();
+            }
+
             return View(employees);
         }
 
-        
+
         //GET: Employee/Add
         [HttpGet]
         public async Task<IActionResult> Add()
