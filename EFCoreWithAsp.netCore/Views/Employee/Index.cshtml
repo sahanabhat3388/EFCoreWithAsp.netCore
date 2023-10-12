@@ -26,14 +26,14 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">FirstName</th>
+                        <th scope="col"><a class="text-dark" asp-controller="Employee" asp-action="Index" asp-route-sortOrder=@ViewData["NameSortParam"]>FirstName</a></th>
                         <th scope="col">LastName</th>
-                        <th scope="col">DateOfBirth</th>
+                        <th scope="col"><a asp-action="Index" asp-route-sortOrder="@ViewData["DateOfBirthSortParm"]" class="text-dark">DateOfBirth</a></th>
                         <th scope="col">Gender</th>
                         <th scope="col">Email</th>
                         <th scope="col">PhoneNumber</th>
                         <th scope="col">Address</th>
-                        <th scope="col">IsActive</th>
+                        <th scope="col"><a asp-action="Index" asp-route-sortOrder="@ViewData["IsActiveSortParam"]" class="text-dark">IsActive</a></th>
                         <th></th>
                         <th></th>
                     </tr>
