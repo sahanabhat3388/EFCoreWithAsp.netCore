@@ -16,47 +16,66 @@ namespace EFCoreWithAsp.netCore.Controllers
         {
             _employeeRepository = employeeRepository;
         }
-        public async Task<IActionResult> Index(string searchString, string sortOrder)
+
+        public async Task<IActionResult> Index(string searchString, string sortOrder, int pageNumber, string currentFilter)
         {
-            var employees = await _employeeRepository.GetAllAsync();
-
-            // Search functionality
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                employees = employees.Where(n => n.FirstName.Contains(searchString)
-                || n.LastName.Contains(searchString)).ToList();
-            }
-
+            ViewData["CurrentSort"] = sortOrder;
+            //Sorting
             ViewData["NameSortParam"] = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewData["DateOfBirthSortParm"] = sortOrder == "date_asc" ? "date_desc" : "date_asc";
             ViewData["IsActiveSortParam"] = sortOrder == "isactive_asc" ? "isactive_desc" : "isactive_asc";
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
 
-            //Sorting
+            ViewData["CurrentFilter"] = searchString;
+
+            var employees =  _employeeRepository.GetAllAsync();
+
+            // Search functionality
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                employees = employees.Where(e => e.FirstName.Contains(searchString) || e.LastName.Contains(searchString));
+            }
+
             switch (sortOrder)
             {
                 case "name_desc":
-                    employees = employees.OrderByDescending(e => e.FirstName).ToList();
+                    employees = employees.OrderByDescending(e => e.FirstName);
                     break;
 
                 case "date_asc":
-                    employees = employees.OrderBy(s => s.DateOfBirth).ToList();
+                    employees = employees.OrderBy(s => s.DateOfBirth);
                     break;
                 case "date_desc":
-                    employees = employees.OrderByDescending(s => s.DateOfBirth).ToList();
+                    employees = employees.OrderByDescending(s => s.DateOfBirth);
                     break;
                 case "isactive_desc":
-                    employees = employees.OrderByDescending(e => e.IsActive).ToList();
+                    employees = employees.OrderByDescending(e => e.IsActive);
                     break;
                 case "isactive_asc":
-                    employees = employees.OrderBy(e => e.IsActive).ToList();
+                    employees = employees.OrderBy(e => e.IsActive);
                     break;
 
                 default:
-                    employees = employees.OrderBy(e => e.FirstName).ToList();
+                    employees = employees.OrderBy(e => e.FirstName);
                     break;
             }
 
-            return View(employees);
+            // Ensure pageNumber is at least 1
+            if (pageNumber < 1)
+            {
+                pageNumber = 1;
+            }
+
+            int pageSize = 5;
+            return View(await PaginatedList<EmployeeViewModel>.CreateAsync(employees, pageNumber, pageSize));
+
         }
 
 
